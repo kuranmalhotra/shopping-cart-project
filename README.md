@@ -1,4 +1,4 @@
-#Shopping Cart Project
+# Shopping Cart Project
 
 <h1>Shopping Cart Project</h1>
 <i><h3>Created by Kuran P. Malhotra</h3></i>
