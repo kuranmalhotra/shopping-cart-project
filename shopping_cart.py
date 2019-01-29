@@ -28,25 +28,22 @@ products = [
 
 sale = []
 
-def product_name(p):
-	return p["name"]
-
 while True:
 	x = input("Please input a product id (type 'exit' to exit):")
-		If x=="exit":
-			break
-		If x!="exit":
-			prodname == str(product_name(x)).title()
-			sale.append(prodname)
-loop	
-
-
-
-
+	if x == "exit":
+		break
+	if x != "exit":
+		x=int(x)
+		for product in products:
+			if product["id"] == x:
+				sale.append({"name": product["name"], "price": product["price"]})
 
 # Final Receipt Output:
 
+line = "-" * 50
+
 # Header:
+print(line)
 print("".center(50," "))
 print("Tesco Metro".center(50, " "))
 print("Magdalen St, Oxford OX1 3AD, UK".center(50, " "))
@@ -55,10 +52,6 @@ print("+44 0345 026 9682".center(50, " "))
 import time
 print(time.strftime('%X %x %Z').center(50, " "))
 print("".center(50," "))
+print(line)
 print("")
 # End Header
-
-
-
-
-
