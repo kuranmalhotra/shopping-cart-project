@@ -55,3 +55,17 @@ print("".center(50," "))
 print(line)
 print("")
 # End Header
+
+subtotal = 0
+
+# Print items:
+
+print("Shopping List:")
+for product in sale:
+     price_usd = "{0:.2f}".format(product["price"])
+     print(" • " + product["name"] + " ($" + str(price_usd) + ")")
+     subtotal = subtotal + float(product["price"])
+print("")
+print(line)
+print("")
+
