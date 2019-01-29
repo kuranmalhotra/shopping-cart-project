@@ -42,6 +42,10 @@ while True:
 
 line = "-" * 50
 
+# Indent to clear the screen:
+
+print("\n" * 20)
+
 # Header:
 print(line)
 print("".center(50," "))
@@ -83,5 +87,5 @@ print("")
 
 print("Thank you for shopping at Tesco Metro!".center(50, " "))
 print("Have a great day!".center(50, " "))
-print("")
+print("\n" * 10)
 
