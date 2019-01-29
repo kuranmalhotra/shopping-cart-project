@@ -69,3 +69,19 @@ print("")
 print(line)
 print("")
 
+# Print totals:
+
+print("Subtotal: $" + "{0:.2f}".format(subtotal))
+print("Sales Tax (6.00%): $" + "{0:.2f}".format(subtotal * .06))
+print("Total: $" + "{0:.2f}".format(subtotal * 1.06))
+print("")
+print(line)
+print("")
+
+# Print Footer:
+
+
+print("Thank you for shopping at Tesco Metro!".center(50, " "))
+print("Have a great day!".center(50, " "))
+print("")
+
