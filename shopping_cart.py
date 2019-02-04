@@ -83,5 +83,5 @@ print("")
 
 print("Thank you for shopping at Tesco Metro!".center(50, " "))
 print("Have a great day!".center(50, " "))
-print("\n" * 10)
+print(line)
 
