@@ -42,10 +42,6 @@ while True:
 
 line = "-" * 50
 
-# Indent to clear the screen:
-
-print("\n" * 20)
-
 # Header:
 print(line)
 print("".center(50," "))
