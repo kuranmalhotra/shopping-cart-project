@@ -1,5 +1,7 @@
 # shopping_cart.py
 
+import time
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -61,6 +63,11 @@ def subtotal():
          subtotal = subtotal + float(product["price"])
     return subtotal
 
+def get_time():
+    pretty_time = time.strftime('%X %x %Z').center(50, " ")
+    return pretty_time
+
+
 if __name__ == '__main__':
 
     while True:
@@ -85,8 +92,7 @@ if __name__ == '__main__':
     print("Magdalen St, Oxford OX1 3AD, UK".center(50, " "))
     print("www.tesco.com".center(50, " "))
     print("+44 0345 026 9682".center(50, " "))
-    import time
-    print(time.strftime('%X %x %Z').center(50, " "))
+    print(get_time())
     print("".center(50," "))
     line()
     print("")

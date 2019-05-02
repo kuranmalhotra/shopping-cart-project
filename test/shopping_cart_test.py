@@ -1,5 +1,7 @@
 # testing the shopping cart application
 
+import time
+
 from app.shopping_cart import (
 	to_usd,
 	tax,
@@ -7,6 +9,7 @@ from app.shopping_cart import (
 	lookup_product,
 	scan,
 	subtotal,
+	get_time,
 	tax_rate,
 	sale,
 	products
@@ -43,3 +46,7 @@ def test_subtotal():
 	# since items were scanned above
 	result = subtotal()
 	assert result == 10.98
+
+def test_get_time():
+	result = get_time()
+	assert result == time.strftime('%X %x %Z').center(50, " ")
