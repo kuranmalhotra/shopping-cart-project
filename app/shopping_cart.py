@@ -34,6 +34,14 @@ def tax(amount):
     tax_amount = amount * tax_rate
     return tax_amount
 
+def total(amount):
+    total_var = amount + tax(amount)
+    return total_var
+
+
+def line():
+    print("-" * 50)
+
 
 if __name__ == '__main__':
 
@@ -53,10 +61,10 @@ if __name__ == '__main__':
 
     # Final Receipt Output:
 
-    line = "-" * 50
+    line()
 
     # Header:
-    print(line)
+    line()
     print("".center(50," "))
     print("Tesco Metro".center(50, " "))
     print("Magdalen St, Oxford OX1 3AD, UK".center(50, " "))
@@ -65,7 +73,7 @@ if __name__ == '__main__':
     import time
     print(time.strftime('%X %x %Z').center(50, " "))
     print("".center(50," "))
-    print(line)
+    line()
     print("")
     # End Header
 
@@ -79,20 +87,20 @@ if __name__ == '__main__':
          print(" • " + product["name"] + f" ({price_usd})")
          subtotal = subtotal + float(product["price"])
     print("")
-    print(line)
+    line()
     print("")
 
     # Print totals:
 
     subtotal_string = to_usd(subtotal)
     sales_tax = to_usd(tax(subtotal))
-    total_string = to_usd(subtotal * 1.06)
+    total_string = to_usd(total(subtotal))
 
     print(f"Subtotal: {subtotal_string}")
     print(f"Sales Tax (6.00%): {sales_tax}")
     print(f"Total: {total_string}")
     print("")
-    print(line)
+    line()
     print("")
 
     # Print Footer:
@@ -100,4 +108,4 @@ if __name__ == '__main__':
 
     print("Thank you for shopping at Tesco Metro!".center(50, " "))
     print("Have a great day!".center(50, " "))
-    print(line)
+    line()

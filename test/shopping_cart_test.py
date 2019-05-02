@@ -3,6 +3,7 @@
 from app.shopping_cart import (
 	to_usd,
 	tax,
+	total
 	tax_rate
 	)
 
@@ -14,3 +15,7 @@ def test_to_usd():
 def test_tax():
 	result = tax(100)
 	assert result == 6
+
+def test_total():
+	result = total(100)
+	assert result == 106
