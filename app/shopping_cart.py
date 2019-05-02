@@ -29,68 +29,71 @@ def to_usd(amount):
     return dollar_str
 
 
-# print(products)	
-
-sale = []
-
-while True:
-	x = input("Please input a product id (type 'exit' to exit):")
-	if x == "exit":
-		break
-	if x != "exit":
-		x=int(x)
-		for product in products:
-			if product["id"] == x:
-				sale.append({"name": product["name"], "price": product["price"]})
-
-# Final Receipt Output:
-
-line = "-" * 50
-
-# Header:
-print(line)
-print("".center(50," "))
-print("Tesco Metro".center(50, " "))
-print("Magdalen St, Oxford OX1 3AD, UK".center(50, " "))
-print("www.tesco.com".center(50, " "))
-print("+44 0345 026 9682".center(50, " "))
-import time
-print(time.strftime('%X %x %Z').center(50, " "))
-print("".center(50," "))
-print(line)
-print("")
-# End Header
-
-subtotal = 0
-
-# Print items:
-
-print("Shopping List:")
-for product in sale:
-     price_usd = to_usd(product["price"])
-     print(" • " + product["name"] + f" ({price_usd})")
-     subtotal = subtotal + float(product["price"])
-print("")
-print(line)
-print("")
-
-# Print totals:
-
-subtotal_string = to_usd(subtotal)
-sales_tax = to_usd(subtotal * .06)
-total_string = to_usd(subtotal * 1.06)
-
-print(f"Subtotal: {subtotal_string}")
-print(f"Sales Tax (6.00%): {sales_tax}")
-print(f"Total: {total_string}")
-print("")
-print(line)
-print("")
-
-# Print Footer:
 
 
-print("Thank you for shopping at Tesco Metro!".center(50, " "))
-print("Have a great day!".center(50, " "))
-print(line)
+if __name__ == '__main__':
 
+    # print(products)   
+
+    sale = []
+
+    while True:
+    	x = input("Please input a product id (type 'exit' to exit):")
+    	if x == "exit":
+    		break
+    	if x != "exit":
+    		x=int(x)
+    		for product in products:
+    			if product["id"] == x:
+    				sale.append({"name": product["name"], "price": product["price"]})
+
+    # Final Receipt Output:
+
+    line = "-" * 50
+
+    # Header:
+    print(line)
+    print("".center(50," "))
+    print("Tesco Metro".center(50, " "))
+    print("Magdalen St, Oxford OX1 3AD, UK".center(50, " "))
+    print("www.tesco.com".center(50, " "))
+    print("+44 0345 026 9682".center(50, " "))
+    import time
+    print(time.strftime('%X %x %Z').center(50, " "))
+    print("".center(50," "))
+    print(line)
+    print("")
+    # End Header
+
+    subtotal = 0
+
+    # Print items:
+
+    print("Shopping List:")
+    for product in sale:
+         price_usd = to_usd(product["price"])
+         print(" • " + product["name"] + f" ({price_usd})")
+         subtotal = subtotal + float(product["price"])
+    print("")
+    print(line)
+    print("")
+
+    # Print totals:
+
+    subtotal_string = to_usd(subtotal)
+    sales_tax = to_usd(subtotal * .06)
+    total_string = to_usd(subtotal * 1.06)
+
+    print(f"Subtotal: {subtotal_string}")
+    print(f"Sales Tax (6.00%): {sales_tax}")
+    print(f"Total: {total_string}")
+    print("")
+    print(line)
+    print("")
+
+    # Print Footer:
+
+
+    print("Thank you for shopping at Tesco Metro!".center(50, " "))
+    print("Have a great day!".center(50, " "))
+    print(line)
