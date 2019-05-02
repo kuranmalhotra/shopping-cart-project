@@ -1,4 +1,4 @@
-# Shopping Cart Project
+# Shopping Cart Project [![Build Status](https://travis-ci.com/kmalhotra13/shopping-cart-project.svg?branch=master)](https://travis-ci.com/kmalhotra13/shopping-cart-project)
 <i><h3>Created by Kuran P. Malhotra</h3></i>
 <i><p>Original commit Jan. 28 2018</p></i>
 
