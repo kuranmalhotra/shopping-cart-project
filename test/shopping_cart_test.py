@@ -30,13 +30,16 @@ def test_lookup_product():
 	assert result == "Name: All-Seasons Salt | Price: $4.99"
 
 def test_scan():
-	scan(1)
-	assert sale == [{"name": "Chocolate Sandwich Cookies", "price": 3.50}]
-
-def test_subtotal():
 	scan(2)
 	scan(3)
 	scan(1)
+	assert sale == [
+		{'name': 'All-Seasons Salt', 'price': 4.99},
+		{'name': 'Robust Golden Unsweetened Oolong Tea', 'price': 2.49},
+		{'name': 'Chocolate Sandwich Cookies', 'price': 3.5},
+		]
+
+def test_subtotal():	
+	# since items were scanned above
 	result = subtotal()
 	assert result == 10.98
-
