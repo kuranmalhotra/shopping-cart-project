@@ -23,12 +23,16 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
+tax_rate = 0.06
+
 def to_usd(amount):
     two_decimal = "{0:.2f}".format(amount)
     dollar_str = f'${two_decimal}'
     return dollar_str
 
-
+def tax(amount):
+    tax_amount = amount * tax_rate
+    return tax_amount
 
 
 if __name__ == '__main__':
@@ -81,7 +85,7 @@ if __name__ == '__main__':
     # Print totals:
 
     subtotal_string = to_usd(subtotal)
-    sales_tax = to_usd(subtotal * .06)
+    sales_tax = to_usd(tax(subtotal))
     total_string = to_usd(subtotal * 1.06)
 
     print(f"Subtotal: {subtotal_string}")
