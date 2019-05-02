@@ -23,7 +23,12 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-# TODO: write some Python code here to produce the desired functionality...
+def to_usd(amount):
+    two_decimal = "{0:.2f}".format(amount)
+    dollar_str = f'${two_decimal}'
+    return dollar_str
+
+
 # print(products)	
 
 sale = []
@@ -62,8 +67,8 @@ subtotal = 0
 
 print("Shopping List:")
 for product in sale:
-     price_usd = "{0:.2f}".format(product["price"])
-     print(" • " + product["name"] + " ($" + str(price_usd) + ")")
+     price_usd = to_usd(product["price"])
+     print(" • " + product["name"] + f" ({price_usd})")
      subtotal = subtotal + float(product["price"])
 print("")
 print(line)
@@ -71,9 +76,13 @@ print("")
 
 # Print totals:
 
-print("Subtotal: $" + "{0:.2f}".format(subtotal))
-print("Sales Tax (6.00%): $" + "{0:.2f}".format(subtotal * .06))
-print("Total: $" + "{0:.2f}".format(subtotal * 1.06))
+subtotal_string = to_usd(subtotal)
+sales_tax = to_usd(subtotal * .06)
+total_string = to_usd(subtotal * 1.06)
+
+print(f"Subtotal: {subtotal_string}")
+print(f"Sales Tax (6.00%): {sales_tax}")
+print(f"Total: {total_string}")
 print("")
 print(line)
 print("")
