@@ -55,6 +55,11 @@ def scan(item):
         if product["id"] == x:
             sale.append({"name": product["name"], "price": product["price"]})
 
+def subtotal():
+    subtotal = 0
+    for product in sale:
+         subtotal = subtotal + float(product["price"])
+    return subtotal
 
 if __name__ == '__main__':
 
@@ -87,21 +92,18 @@ if __name__ == '__main__':
     print("")
     # End Header
 
-    subtotal = 0
-
     # Print items:
 
     print("Shopping List:")
     for product in sale:
          price_usd = to_usd(product["price"])
          print(" • " + product["name"] + f" ({price_usd})")
-         subtotal = subtotal + float(product["price"])
     print("")
     line()
     print("")
 
     # Print totals:
-
+    subtotal = subtotal()
     subtotal_string = to_usd(subtotal)
     sales_tax = to_usd(tax(subtotal))
     total_string = to_usd(total(subtotal))
