@@ -24,6 +24,7 @@ products = [
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 tax_rate = 0.06
+sale = []
 
 def to_usd(amount):
     two_decimal = "{0:.2f}".format(amount)
@@ -38,26 +39,35 @@ def total(amount):
     total_var = amount + tax(amount)
     return total_var
 
+def lookup_product(x):
+    result = ""
+    for product in products:
+        if product["id"] == x:
+            result = ("Name: " + product["name"] + " | Price: " + to_usd(product["price"]))
+    return result
 
 def line():
     print("-" * 50)
 
+def scan(item):
+    x=int(item)
+    for product in products:
+        if product["id"] == x:
+            sale.append({"name": product["name"], "price": product["price"]})
+
 
 if __name__ == '__main__':
 
-    # print(products)   
-
-    sale = []
-
     while True:
-    	x = input("Please input a product id (type 'exit' to exit):")
-    	if x == "exit":
-    		break
-    	if x != "exit":
-    		x=int(x)
-    		for product in products:
-    			if product["id"] == x:
-    				sale.append({"name": product["name"], "price": product["price"]})
+        x = input("Please input a product id (type 'exit' to exit or 'lookup' to look up a product):")
+        if x == "exit":
+            break
+        elif x == "lookup":
+            pid = input("Please input a product id to lookup: ")
+            response = lookup_product(int(pid))
+            print(response)
+        else: scan(x)
+        
 
     # Final Receipt Output:
 
