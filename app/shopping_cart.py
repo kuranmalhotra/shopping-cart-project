@@ -1,5 +1,7 @@
 # shopping_cart.py
 
+import time
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -23,65 +25,105 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-# TODO: write some Python code here to produce the desired functionality...
-# print(products)	
-
+tax_rate = 0.06
 sale = []
 
-while True:
-	x = input("Please input a product id (type 'exit' to exit):")
-	if x == "exit":
-		break
-	if x != "exit":
-		x=int(x)
-		for product in products:
-			if product["id"] == x:
-				sale.append({"name": product["name"], "price": product["price"]})
+def to_usd(amount):
+    two_decimal = "{0:.2f}".format(amount)
+    dollar_str = f'${two_decimal}'
+    return dollar_str
 
-# Final Receipt Output:
+def tax(amount):
+    tax_amount = amount * tax_rate
+    return tax_amount
 
-line = "-" * 50
+def total(amount):
+    total_var = amount + tax(amount)
+    return total_var
 
-# Header:
-print(line)
-print("".center(50," "))
-print("Tesco Metro".center(50, " "))
-print("Magdalen St, Oxford OX1 3AD, UK".center(50, " "))
-print("www.tesco.com".center(50, " "))
-print("+44 0345 026 9682".center(50, " "))
-import time
-print(time.strftime('%X %x %Z').center(50, " "))
-print("".center(50," "))
-print(line)
-print("")
-# End Header
+def lookup_product(x):
+    result = ""
+    for product in products:
+        if product["id"] == x:
+            result = ("Name: " + product["name"] + " | Price: " + to_usd(product["price"]))
+    return result
 
-subtotal = 0
+def line():
+    print("-" * 50)
 
-# Print items:
+def scan(item):
+    x=int(item)
+    for product in products:
+        if product["id"] == x:
+            sale.append({"name": product["name"], "price": product["price"]})
 
-print("Shopping List:")
-for product in sale:
-     price_usd = "{0:.2f}".format(product["price"])
-     print(" • " + product["name"] + " ($" + str(price_usd) + ")")
-     subtotal = subtotal + float(product["price"])
-print("")
-print(line)
-print("")
+def subtotal():
+    subtotal = 0
+    for product in sale:
+         subtotal = subtotal + float(product["price"])
+    return subtotal
 
-# Print totals:
-
-print("Subtotal: $" + "{0:.2f}".format(subtotal))
-print("Sales Tax (6.00%): $" + "{0:.2f}".format(subtotal * .06))
-print("Total: $" + "{0:.2f}".format(subtotal * 1.06))
-print("")
-print(line)
-print("")
-
-# Print Footer:
+def get_time():
+    pretty_time = time.strftime('%X %x %Z').center(50, " ")
+    return pretty_time
 
 
-print("Thank you for shopping at Tesco Metro!".center(50, " "))
-print("Have a great day!".center(50, " "))
-print(line)
+if __name__ == '__main__':
 
+    while True:
+        x = input("Please input a product id (type 'exit' to exit or 'lookup' to look up a product):")
+        if x == "exit":
+            break
+        elif x == "lookup":
+            pid = input("Please input a product id to lookup: ")
+            response = lookup_product(int(pid))
+            print(response)
+        else: scan(x)
+        
+
+    # Final Receipt Output:
+
+    line()
+
+    # Header:
+    line()
+    print("".center(50," "))
+    print("Tesco Metro".center(50, " "))
+    print("Magdalen St, Oxford OX1 3AD, UK".center(50, " "))
+    print("www.tesco.com".center(50, " "))
+    print("+44 0345 026 9682".center(50, " "))
+    print(get_time())
+    print("".center(50," "))
+    line()
+    print("")
+    # End Header
+
+    # Print items:
+
+    print("Shopping List:")
+    for product in sale:
+         price_usd = to_usd(product["price"])
+         print(" • " + product["name"] + f" ({price_usd})")
+    print("")
+    line()
+    print("")
+
+    # Print totals:
+    subtotal = subtotal()
+    subtotal_string = to_usd(subtotal)
+    sales_tax = to_usd(tax(subtotal))
+    total_string = to_usd(total(subtotal))
+
+    print(f"Subtotal: {subtotal_string}")
+    print(f"Sales Tax (6.00%): {sales_tax}")
+    print(f"Total: {total_string}")
+    print("")
+    line()
+    print("")
+
+    # Print Footer:
+
+
+    print("Thank you for shopping at Tesco Metro!".center(50, " "))
+    print("Have a great day!".center(50, " "))
+    line()
